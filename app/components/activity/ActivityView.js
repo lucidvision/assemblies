@@ -9,7 +9,7 @@ import NavigationBar from 'react-native-navbar';
 import Colors from '../../styles/colors';
 import { globals } from '../../styles';
 
-class ActivityView extends Component{
+class ActivityView extends Component {
   render(){
     let titleConfig = { title: 'Activity', tintColor: 'white' };
     return (

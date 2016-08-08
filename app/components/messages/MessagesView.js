@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text
+  Text,
+  Image,
+  TouchableOpacity,
+  ListView
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -9,7 +12,7 @@ import NavigationBar from 'react-native-navbar';
 import Colors from '../../styles/colors';
 import { globals } from '../../styles';
 
-class MessagesView extends Component{
+class MessagesView extends Component {
   render(){
     let titleConfig = { title: 'Messages', tintColor: 'white' };
     return (
