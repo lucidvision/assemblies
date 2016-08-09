@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -17,6 +11,18 @@ import Dashboard from './app/components/Dashboard';
 import { globals } from './app/styles';
 
 class assemblies extends Component {
+  constructor() {
+    super();
+    this.updateUser = this.updateUser.bind(this);
+    this.state = {
+      user: null
+    };
+  }
+
+  updateUser(user) {
+    this.setState({ user: user });
+  }
+
   render() {
     return (
       <Navigator
@@ -30,15 +36,27 @@ class assemblies extends Component {
             );
             case 'Dashboard':
               return (
-                <Dashboard navigator={navigator} />
+                <Dashboard
+                  navigator={navigator}
+                  updateUser={this.updateUser}
+                  user={this.state.user} />
             );
             case 'Register':
               return (
                 <Register navigator={navigator} />
             );
+            case 'RegisterConfirmation':
+              return (
+                <RegisterConfirmation
+                  {...route}
+                  navigator={navigator}
+                  updateUser={this.updateUser} />
+            );
             case 'Login':
               return (
-                <Login navigator={navigator} />
+                <Login
+                  navigator={navigator}
+                  updateUser={this.updateUser} />
             );
           }
         }}
