@@ -18,11 +18,16 @@ class Landing extends Component {
   constructor() {
     super();
     this.visitLogin = this.visitLogin.bind(this);
+    this.visitRegister = this.visitRegister.bind(this);
     this.visitDashboard = this.visitDashboard.bind(this);
   }
 
   visitLogin() {
     this.props.navigator.push({ name: 'Login' });
+  }
+
+  visitRegister() {
+    this.props.navigator.push({ name: 'Register' });
   }
 
   visitDashboard() {
@@ -59,10 +64,10 @@ class Landing extends Component {
         </TouchableOpacity>
         <TouchableOpacity
           style={globals.button}
-          onPress={this.visitDashboard}>
+          onPress={this.visitRegister}>
           <Icon name='person' size={36} color='white' />
           <Text style={globals.buttonText}>
-            Go to Dashboard
+            Create an account
           </Text>
         </TouchableOpacity>
       </View>

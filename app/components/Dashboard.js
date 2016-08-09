@@ -5,13 +5,24 @@ import { TabBarItemIOS } from 'react-native-vector-icons/Ionicons';
 import ActivityView from './activity/ActivityView';
 import MessagesView from './messages/MessagesView';
 import ProfileView from './profile/ProfileView';
+import { API } from '../config';
+import { Headers } from '../fixtures';
 
 class Dashboard extends Component {
   constructor() {
     super();
+    this.logout = this.logout.bind(this);
     this.state = {
       selectedTab: 'Activity'
     }
+  }
+
+  logout() {
+    fetch(`${API}/users/logout`, { method: 'POST', headers: Headers })
+    .then(response => response.json())
+    .then(data => this.props.logout())
+    .catch(err => {})
+    .done();
   }
 
   render() {
@@ -37,7 +48,7 @@ class Dashboard extends Component {
           selected={this.state.selectedTab === 'Profile'}
           iconName='ios-person'
           onPress={() => this.setState({ selectedTab: 'Profile' })}>
-          <ProfileView currentUser={user}/>
+          <ProfileView currentUser={user} logout={this.logout} />
         </TabBarItemIOS>
       </TabBarIOS>
     )
