@@ -12,14 +12,17 @@ import Colors from '../styles/colors';
 import { globals } from '../styles';
 import { landingStyles } from '../styles';
 
-const BackgroundImage = require('../images/welcome@2x.png');
-const Logo = require('../images/logo.png');
 const styles = landingStyles;
 
 class Landing extends Component {
   constructor() {
     super();
+    this.visitLogin = this.visitLogin.bind(this);
     this.visitDashboard = this.visitDashboard.bind(this);
+  }
+
+  visitLogin() {
+    this.props.navigator.push({ name: 'Login' });
   }
 
   visitDashboard() {
@@ -46,6 +49,14 @@ class Landing extends Component {
             Where Developers Connect
           </Text>
         </View>
+        <TouchableOpacity
+          style={[globals.button, globals.inactive, styles.loginButton]}
+          onPress={this.visitLogin}>
+          <Icon name='lock' size={36} color={Colors.brandPrimary} />
+          <Text style={[globals.buttonText, globals.primaryText]}>
+            Login
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={globals.button}
           onPress={this.visitDashboard}>

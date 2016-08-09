@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 
 import Landing from './app/components/Landing';
+import Register from './app/components/accounts/Register';
+import Login from './app/components/accounts/Login';
 import Dashboard from './app/components/Dashboard';
 import { globals } from './app/styles';
 
@@ -25,11 +27,19 @@ class assemblies extends Component {
             case 'Landing':
               return (
                 <Landing navigator={navigator} />
-            )
+            );
             case 'Dashboard':
               return (
                 <Dashboard navigator={navigator} />
-            )
+            );
+            case 'Register':
+              return (
+                <Register navigator={navigator} />
+            );
+            case 'Login':
+              return (
+                <Login navigator={navigator} />
+            );
           }
         }}
       />

@@ -6,12 +6,6 @@ import ActivityView from './activity/ActivityView';
 import MessagesView from './messages/MessagesView';
 import ProfileView from './profile/ProfileView';
 
-const BackButton = ({ handlePress }) => (
-  <TouchableOpacity onPress={handlePress} style={globals.pa1}>
-    <Icon name='ios-arrow-back' size={25} color='white' />
-  </TouchableOpacity>
-);
-
 class Dashboard extends Component {
   constructor() {
     super();
