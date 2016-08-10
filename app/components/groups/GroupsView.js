@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navigator } from 'react-native';
 import { find, isEqual } from 'underscore';
 
+import Group from './Group';
 import Groups from './Groups';
 import CreateGroup from './CreateGroup';
 import CreateGroupConfirmation from './CreateGroupConfirmation';
@@ -12,6 +13,7 @@ import { globals } from '../../styles';
 class GroupsView extends Component{
   constructor(){
     super();
+    this.addGroup = this.addGroup.bind(this);
     this.state = {
       groups            : [],
       ready             : false,
@@ -48,6 +50,13 @@ class GroupsView extends Component{
   ready(err){
     this.setState({ ready: true })
   }
+  addGroup(group){
+    this.setState({
+      groups: [
+        ...this.state.groups, group
+      ]
+    })
+  }
   render(){
     return (
       <Navigator
@@ -77,6 +86,15 @@ class GroupsView extends Component{
                 <CreateGroupConfirmation
                   {...this.props}
                   {...this.state}
+                  {...route}
+                  navigator={navigator}
+                  addGroup={this.addGroup}
+                />
+            );
+            case 'Group':
+              return (
+                <Group
+                  {...this.props}
                   {...route}
                   navigator={navigator}
                 />
